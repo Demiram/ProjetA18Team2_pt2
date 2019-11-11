@@ -8,6 +8,8 @@ package manipJson;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modele.Lot;
 import modele.Terrain;
 import net.sf.json.JSONArray;
@@ -18,8 +20,9 @@ import net.sf.json.JSONObject;
  * @author Demi
  */
 public class IOJson {
-    public static Terrain traiterEntreeTerrain() throws IOException{
-        String json = FileReader.loadFileIntoString("json/test01.json");
+    public static Terrain traiterEntreeTerrain() throws IOException {
+        String json;
+        json = FileReader.loadFileIntoString("json/test01.json");
         Terrain terrain = new Terrain();
         List<Lot> entreeLotsArr = new ArrayList<Lot>();
         Lot lotEntreeJson = new Lot();
@@ -61,7 +64,24 @@ public class IOJson {
         return terrain;
     }
     
-    public static void traiterSortieTerrain(Terrain terrain) {
+    public static void traiterSortieTerrain(Terrain terrain) throws IOException {
+        JSONObject mainObject = new JSONObject();
+        List<Lot> lots = terrain.getLots();
+        JSONArray lotsJson = new JSONArray();
+        JSONObject singleLot = new JSONObject();
         
+        mainObject.accumulate("valeur_fonciere_totale", terrain.getValeur_fonciere_totale() + " $");
+        mainObject.accumulate("taxe_scolaire", terrain.getTaxe_scolaire() + " $");
+        mainObject.accumulate("taxe_municipale", terrain.getTaxe_municipale() + " $");
+        mainObject.accumulate("lotissements", lotsJson);
+        
+        for(int i = 0; i < lots.size(); i++) {
+            singleLot.accumulate("description", lots.get(i).getDescriptionSortie());
+            singleLot.accumulate("valeur_par_lot", lots.get(i).getValeur_par_lot() + " $");
+            lotsJson.add(singleLot);
+            singleLot.clear();
+        }
+        
+        FileWriter.saveStringIntoFile("json/out_test01.json", mainObject.toString());
     }
 }
