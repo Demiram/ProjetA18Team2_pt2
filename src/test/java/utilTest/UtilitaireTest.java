@@ -46,7 +46,7 @@ public class UtilitaireTest {
         double valeur = 5.00;
         double valeurAttendue = 5.00;
         double retour = Utilitaire.arrondir5CentSup(valeur);
-        assertTrue("Valeur attendue: "+valeurAttendue+", mais valeur obtenue: "+retour, valeurAttendue==retour);
+        assertTrue("Valeur attendue: " + valeurAttendue + ", mais valeur obtenue: " + retour, valeurAttendue == retour);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class UtilitaireTest {
         double valeur = 5.03;
         double valeurAttendue = 5.05;
         double retour = Utilitaire.arrondir5CentSup(valeur);
-        assertTrue("Valeur attendue: "+valeurAttendue+", mais valeur obtenue: "+retour, valeurAttendue==retour);
+        assertTrue("Valeur attendue: " + valeurAttendue + ", mais valeur obtenue: " + retour, valeurAttendue == retour);
     }
 
     @Test
@@ -62,7 +62,57 @@ public class UtilitaireTest {
         double valeur = 5.05;
         double valeurAttendue = 5.05;
         double retour = Utilitaire.arrondir5CentSup(valeur);
-        assertTrue("Valeur attendue: "+valeurAttendue+", mais valeur obtenue: "+retour, valeurAttendue==retour);
+        assertTrue("Valeur attendue: " + valeurAttendue + ", mais valeur obtenue: " + retour, valeurAttendue == retour);
 
+    }
+
+    @Test
+    public void TestArrondir5CentSup_val88() {
+        double valeur = 0.88;
+        double valeurAttendue = 0.9;
+        double retour = Utilitaire.arrondir5CentSup(valeur);
+        assertTrue("Valeur attendue: " + valeurAttendue + ", mais valeur obtenue: " + retour, valeurAttendue == retour);
+
+    }
+
+    @Test
+    public void TestarrondirDecimales_1_2() {
+        double valeur = 0.001;
+        double valeurAttendue = 0.00;
+        double retour = Utilitaire.arrondirDecimales(valeur, 2);
+        assertTrue("Valeur attendue: " + valeurAttendue + ", mais valeur obtenue: " + retour, valeurAttendue == retour);
+    }
+
+    @Test
+    public void TestarrondirDecimales_5_2() {
+        double valeur = 0.005;
+        double valeurAttendue = 0.01;
+        double retour = Utilitaire.arrondirDecimales(valeur, 2);
+        assertTrue("Valeur attendue: " + valeurAttendue + ", mais valeur obtenue: " + retour, valeurAttendue == retour);
+
+    }
+
+    @Test
+    public void TestarrondirDecimales_9_2() {
+        double valeur = 0.009;
+        double valeurAttendue = 0.01;
+        double retour = Utilitaire.arrondirDecimales(valeur, 2);
+        assertTrue("Valeur attendue: " + valeurAttendue + ", mais valeur obtenue: " + retour, valeurAttendue == retour);
+    }
+
+    @Test
+    public void TestarrondirDecimales_9_3() {
+        double valeur = 0.0009;
+        double valeurAttendue = 0.001;
+        double retour = Utilitaire.arrondirDecimales(valeur, 3);
+        assertTrue("Valeur attendue: " + valeurAttendue + ", mais valeur obtenue: " + retour, valeurAttendue == retour);
+    }
+
+    @Test
+    public void TestarrondirDecimales_4_3() {
+        double valeur = 0.0004;
+        double valeurAttendue = 0.000;
+        double retour = Utilitaire.arrondirDecimales(valeur, 3);
+        assertTrue("Valeur attendue: " + valeurAttendue + ", mais valeur obtenue: " + retour, valeurAttendue == retour);
     }
 }

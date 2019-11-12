@@ -22,4 +22,18 @@ public class Utilitaire {
         return montant_de_base/100;
     }
     
+    public static double arrondirDecimales(double nombreAArondir, double nbDecimales){
+        
+        double coefficient = Math.pow(10.0, nbDecimales);
+        System.out.println("coefficient: "+coefficient);
+        System.out.println("nombre à arrondir: "+ nombreAArondir);
+        double nombreArrondi = Math.round(nombreAArondir*coefficient)/coefficient;
+        System.out.println("nombre arrondi: "+nombreArrondi);
+        return nombreArrondi;
+//        Double doubleAArondir = new Double(nombreAArondir*coefficient);
+//        System.out.println(doubleAArondir);
+//        int nombreArrondi = Math.round(doubleAArondir.longValue());
+//        return nombreArrondi/100;
+    }
+    
 }
