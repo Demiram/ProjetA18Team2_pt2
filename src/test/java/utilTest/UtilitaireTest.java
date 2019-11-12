@@ -89,7 +89,6 @@ public class UtilitaireTest {
         double valeurAttendue = 0.01;
         double retour = Utilitaire.arrondirDecimales(valeur, 2);
         assertTrue("Valeur attendue: " + valeurAttendue + ", mais valeur obtenue: " + retour, valeurAttendue == retour);
-
     }
 
     @Test
