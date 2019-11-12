@@ -27,7 +27,7 @@ public class Agricole {
         //pour chaque lot, calculer la valeur du lot et l'additionner au total
         for (Lot lot : t.getLots()) {
             double valeurLot;
-            valeurLot = calculerValeurFoncièreLot(t, lot.getSuperficie());
+            valeurLot = calculerValeurFonciereLot(t, lot.getSuperficie());
             valeurLot += calculerDroitsLot(lot, valeurLot);
             //valeurLot += calculerValeurServices(lot);
             lot.setValeur_par_lot(valeurLot);
@@ -40,13 +40,13 @@ public class Agricole {
     }
 
         
-    public static double calculerValeurFoncièreLot(Terrain t, double superficie) {
+    public static double calculerValeurFonciereLot(Terrain t, double superficie) {
     double retour = superficie * (t.getPrix_m2_min());
-    return Double.parseDouble(DF.format(retour));
+    return (Utilitaire.arrondirDecimales(retour, 2));
     } 
 
     public static double calculerDroitsLot(Lot lot, double valeurLot) {
         double retour = MONTANT_BASE - (lot.getNombre_droits_passage() * valeurLot * COEF_DROITS);
-        return Double.parseDouble(DF.format(retour));
+        return (Utilitaire.arrondirDecimales(retour, 2));
     }   
 }
