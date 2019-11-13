@@ -114,7 +114,7 @@ public class UtilitaireTest {
         double retour = Utilitaire.arrondirDecimales(valeur, 3);
         assertTrue("Valeur attendue: " + valeurAttendue + ", mais valeur obtenue: " + retour, valeurAttendue == retour);
     }
-    
+
     @Test
     public void TestarrondirDecimales_3885_2() {
         double valeur = 0.3885;
@@ -123,4 +123,19 @@ public class UtilitaireTest {
         assertTrue("Valeur attendue: " + valeurAttendue + ", mais valeur obtenue: " + retour, valeurAttendue == retour);
     }
 
+    @Test
+    public void TestarrondirDecimales_m8_2() {
+        double valeur = -0.008;
+        double valeurAttendue = -0.01;
+        double retour = Utilitaire.arrondirDecimales(valeur, 2);
+        assertTrue("Valeur attendue: " + valeurAttendue + ", mais valeur obtenue: " + retour, valeurAttendue == retour);
+    }
+
+    @Test
+    public void TestarrondirDecimales_m4_2() {
+        double valeur = -0.004;
+        double valeurAttendue = 0;
+        double retour = Utilitaire.arrondirDecimales(valeur, 2);
+        assertTrue("Valeur attendue: " + valeurAttendue + ", mais valeur obtenue: " + retour, valeurAttendue == retour);
+    }
 }
