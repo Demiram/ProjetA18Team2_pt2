@@ -108,14 +108,14 @@ public class ResidentielTest {
         assertTrue("résultat attendu: " + resultatAttendu + ", mais résultat obtenu: " + resultat, resultatAttendu == resultat);
     }
 
-//    @Test
-//    public void test_calculerDroitsLot_7_7500p55() {
-//        int nbDroits = 7;
-//        double valeurFonciere = 7500.55;
-//        double resultatAttendu = -4750.39;
-//        double resultat = Residentiel.calculerDroitsLot(nbDroits, valeurFonciere);
-//        assertTrue("résultat attendu: " + resultatAttendu + ", mais résultat obtenu: " + resultat, resultatAttendu == resultat);
-//    }
+    @Test
+    public void test_calculerDroitsLot_7_7500p55() {
+        int nbDroits = 7;
+        double valeurFonciere = 7500.55;
+        double resultatAttendu = -4750.38;
+        double resultat = Residentiel.calculerDroitsLot(nbDroits, valeurFonciere);
+        assertTrue("résultat attendu: " + resultatAttendu + ", mais résultat obtenu: " + resultat, resultatAttendu == resultat);
+    }
 
     @Test
     public void test_calculerDroitsLot_1_500() {

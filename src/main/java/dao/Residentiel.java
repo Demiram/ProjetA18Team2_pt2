@@ -39,7 +39,7 @@ public class Residentiel {
     }
 
     public static double calculerValeurFonciereLot(Terrain t, double superficie) {
-        double retour = superficie * (t.getPrix_m2_min() + t.getPrix_m2_max()) / 2;
+        double retour = superficie * (t.getPrix_m2_min() + t.getPrix_m2_max()) / 2.0;
         return Utilitaire.arrondirDecimales(retour, 2);
     }
 
