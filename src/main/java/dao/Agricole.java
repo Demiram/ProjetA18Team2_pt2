@@ -19,7 +19,6 @@ public class Agricole {
      private static final double VALEUR_BASE = 733.77; // valeur fixe de départ pour le calcul de la valeur foncière totale du terrain
     private static final double MONTANT_BASE = 500.00; // montant de base pour le calcul de la valeur des droits de passage
     private static final double COEF_DROITS = 0.05; // coefficient de multiplication pour les droits de passage
-    private static final DecimalFormat DF = new DecimalFormat("#,##");
 
     
         public static void calculerValeurTerrainAgricole(Terrain t) {
