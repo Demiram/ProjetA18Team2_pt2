@@ -48,5 +48,7 @@ public class Agricole {
     public static double calculerDroitsLot(Lot lot, double valeurLot) {
         double retour = MONTANT_BASE - (lot.getNombre_droits_passage() * valeurLot * COEF_DROITS);
         return (Utilitaire.arrondirDecimales(retour, 2));
-    }   
+    }
+    
+    
 }
