@@ -114,4 +114,13 @@ public class UtilitaireTest {
         double retour = Utilitaire.arrondirDecimales(valeur, 3);
         assertTrue("Valeur attendue: " + valeurAttendue + ", mais valeur obtenue: " + retour, valeurAttendue == retour);
     }
+    
+    @Test
+    public void TestarrondirDecimales_3885_2() {
+        double valeur = 0.3885;
+        double valeurAttendue = 0.39;
+        double retour = Utilitaire.arrondirDecimales(valeur, 2);
+        assertTrue("Valeur attendue: " + valeurAttendue + ", mais valeur obtenue: " + retour, valeurAttendue == retour);
+    }
+
 }
