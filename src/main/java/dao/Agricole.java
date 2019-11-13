@@ -5,7 +5,6 @@
  */
 package dao;
 
-import java.text.DecimalFormat;
 import util.Utilitaire;
 import util.CalculTaxes;
 import modele.Terrain;
