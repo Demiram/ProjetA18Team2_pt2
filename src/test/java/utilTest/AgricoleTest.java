@@ -51,25 +51,48 @@ public class AgricoleTest {
 //        double retour = CalculTaxes.CalculerTaxeScolaire(montant_de_base);
 //        assertTrue("résultat attendu: " + resultatAttendu + ", mais résultat obtenu: " + retour, resultatAttendu == retour);
 //    }
+    
+    
+  
     @Test
-    public void calculerValeurFonciereLotTest() {
+    public void testCalculerValeurFonciereLot_m2_v1() {
         double superficie=4.50;
+        double prix_min= 5;
+        
         Terrain t1 = new Terrain(0, 5, 8);
-        double retour = 4.50 * (t1.getPrix_m2_min());
-        double resultatAttendu = 22.5;
-
-        assertTrue("résultat attendu: " + resultatAttendu + ", mais résultat obtenu: " + retour, resultatAttendu == retour);
+        double resultat = superficie * (t1.getPrix_m2_min());
+        double resultatAttendu = superficie * prix_min;
+                resultatAttendu =22.5;
+        assertTrue("résultat attendu: " + resultatAttendu + ", mais résultat obtenu: " + resultat, resultatAttendu == resultat);
     }
 
+        @Test
+    public void testCalculerValeurFonciereLot_m2_v2() {
+        double superficie=90.5;
+        double prix_min= 105.50;
+        
+        Terrain t2 = new Terrain(0, 105.50, 8);
+        double resultat = superficie * (t2.getPrix_m2_min());
+        
+    double resultatAttendu = superficie * prix_min;
+                resultatAttendu =9547.75;
+        assertTrue("résultat attendu: " + resultatAttendu + ", mais résultat obtenu: " + resultat, resultatAttendu == resultat);
+    }
+    
     @Test
-    public void calculerDroitsLot() {
+    public void testcalculerDroitsLot() {
+        
+                int nbDroits = 4;
+        double valeurLot = 100.25;
+        double resultatAttendu = 479.95;
+        
         Lot lot1 = new Lot("lot 1", 4, 0, 465, "2015-10-14");
-        double valeurLot = 35.25;
-        double retour = 500.00 - (4 * 300 * 0.05);
-        double resultatAttendu = 440;
+        
+        double resultat = 500.00 - (lot1.getNombre_droits_passage() * valeurLot * 0.05);
+  
 
         //double retour = MONTANT_BASE - (lot.getNombre_droits_passage() * valeurLot * COEF_DROITS);
-        assertTrue("résultat attendu: " + resultatAttendu + ", mais résultat obtenu: " + retour, resultatAttendu == retour);
+        assertTrue("résultat attendu: " + resultatAttendu + ", mais résultat obtenu: " + resultat, resultatAttendu == resultat);
 
     }
 }
