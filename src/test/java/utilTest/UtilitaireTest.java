@@ -138,4 +138,12 @@ public class UtilitaireTest {
         double retour = Utilitaire.arrondirDecimales(valeur, 2);
         assertTrue("Valeur attendue: " + valeurAttendue + ", mais valeur obtenue: " + retour, valeurAttendue == retour);
     }
+    
+    @Test
+    public void TestarrondirDecimales_m3885_2() {
+        double valeur = -4750.3885;
+        double valeurAttendue = -4750.39;
+        double retour = Utilitaire.arrondirDecimales(valeur, 2);
+        assertTrue("Valeur attendue: " + valeurAttendue + ", mais valeur obtenue: " + retour, valeurAttendue == retour);
+    }
 }
