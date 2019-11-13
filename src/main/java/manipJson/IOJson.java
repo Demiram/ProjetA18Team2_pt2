@@ -20,9 +20,8 @@ import net.sf.json.JSONObject;
  * @author Demi
  */
 public class IOJson {
-    public static Terrain traiterEntreeTerrain() throws IOException {
-        String json;
-        json = FileReader.loadFileIntoString("json/test01.json");
+    public static Terrain traiterEntreeTerrain(String inputPath) throws IOException {
+        String json = FileReader.loadFileIntoString(inputPath);
         Terrain terrain = new Terrain();
         List<Lot> entreeLotsArr = new ArrayList<Lot>();
         Lot lotEntreeJson = new Lot();
@@ -64,7 +63,7 @@ public class IOJson {
         return terrain;
     }
     
-    public static void traiterSortieTerrain(Terrain terrain) throws IOException {
+    public static void traiterSortieTerrain(Terrain terrain, String outputPath) throws IOException {
         JSONObject mainObject = new JSONObject();
         List<Lot> lots = terrain.getLots();
         JSONArray lotsJson = new JSONArray();
@@ -82,6 +81,6 @@ public class IOJson {
             singleLot.clear();
         }
         
-        FileWriter.saveStringIntoFile("json/out_test01.json", mainObject.toString());
+        FileWriter.saveStringIntoFile(outputPath, mainObject.toString());
     }
 }
