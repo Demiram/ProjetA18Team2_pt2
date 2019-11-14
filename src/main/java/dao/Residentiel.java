@@ -18,8 +18,8 @@ import util.Utilitaire;
  */
 public class Residentiel {
 
-    private static final double VALEUR_BASE = 733.77; // valeur fixe de départ pour le calcul de la valeur foncière totale du terrain
-    private static final double MONTANT_BASE = 500.00; // montant de base pour le calcul de la valeur des droits de passage
+    private static final double VALEUR_FONCIERE_BASE_TERRAIN = 733.77; // valeur fixe de départ pour le calcul de la valeur foncière totale du terrain
+    private static final double MONTANT_BASE_CALCUL_DROITS_LOTS = 500.00; // montant de base pour le calcul de la valeur des droits de passage
     private static final double COEF_DROITS = 0.1; // coefficient de multiplication pour les droits de passage
 
     public static void calculerValeurTerrain(Terrain t) {
@@ -33,7 +33,8 @@ public class Residentiel {
             lot.setValeur_par_lot(valeurLot);
             totalLots += valeurLot;
         }
-        t.setValeur_fonciere_totale(Utilitaire.arrondir5CentSup(MONTANT_BASE + totalLots));
+
+        t.setValeur_fonciere_totale(Utilitaire.arrondir5CentSup(VALEUR_FONCIERE_BASE_TERRAIN + totalLots));
         t.setTaxe_scolaire(CalculTaxes.CalculerTaxeScolaire(t.getValeur_fonciere_totale()));
         t.setTaxe_municipale(CalculTaxes.CalculerTaxeMunicipale(t.getValeur_fonciere_totale()));
     }
@@ -44,7 +45,7 @@ public class Residentiel {
     }
 
     public static double calculerDroitsLot(int nbDroits, double valeurLot) {
-        double retour = MONTANT_BASE - (nbDroits * valeurLot * COEF_DROITS);
+        double retour = MONTANT_BASE_CALCUL_DROITS_LOTS - (nbDroits * valeurLot * COEF_DROITS);
         return Utilitaire.arrondirDecimales(retour, 2);
     }
 

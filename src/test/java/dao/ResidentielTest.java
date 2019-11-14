@@ -245,29 +245,29 @@ public class ResidentielTest {
         assertTrue("résultat attendu: " + resultatAttendu + ", mais résultat obtenu: " + resultat, resultatAttendu == resultat);
     }
 
-//    @Test
-//    public void test_calculerValeurTerrain() {
-//        //public Lot(String descriptionEntree, int nombre_droits_passage, int nombre_services, int superficie, String date_mesure) {
-//        Lot lot1 = new Lot("Lot1", 2, 2, 300, "4-02-2019");
-//        Lot lot2 = new Lot("Lot2", 2, 2, 600, "4-02-2019");
-//        Lot lot3 = new Lot("Lot3", 2, 2, 15000, "4-02-2019");
-//        List<Lot> lots = new ArrayList();
-//        lots.add(lot1);
-//        lots.add(lot2);
-//        lots.add(lot3);
-//        Terrain terrain = new Terrain(1, 50.00, 100.00, lots);
-//        Residentiel.calculerValeurTerrain(terrain);
-//        double valFonciereAttendue = 959233.80;
-//        double taxeScolaireAttendue = 11510.85;
-//        double taxeMunicipaleAttendue = 23980.85;
-//        boolean resultat = valFonciereAttendue == terrain.getValeur_fonciere_totale()
-//                && taxeScolaireAttendue == terrain.getTaxe_scolaire()
-//                && taxeMunicipaleAttendue == terrain.getTaxe_municipale();
-//        assertTrue("valfoncièreAttendue: " + valFonciereAttendue+", vs valeur obtenue: "+terrain.getValeur_fonciere_totale()
-//                + "\ntaxe scolaire attendue: " + taxeScolaireAttendue+", vs valeur obtenue: "+terrain.getTaxe_scolaire()
-//                + "\ntaxe muninipale attendue: " + taxeMunicipaleAttendue+", vs valeur obtenue: "+terrain.getTaxe_municipale(), 
-//                resultat);
-//    }
+    @Test
+    public void test_calculerValeurTerrain() {
+        //public Lot(String descriptionEntree, int nombre_droits_passage, int nombre_services, int superficie, String date_mesure) {
+        Lot lot1 = new Lot("Lot1", 2, 2, 300, "4-02-2019");
+        Lot lot2 = new Lot("Lot2", 2, 2, 600, "4-02-2019");
+        Lot lot3 = new Lot("Lot3", 2, 2, 15000, "4-02-2019");
+        List<Lot> lots = new ArrayList();
+        lots.add(lot1);
+        lots.add(lot2);
+        lots.add(lot3);
+        Terrain terrain = new Terrain(1, 50.00, 100.00, lots);
+        Residentiel.calculerValeurTerrain(terrain);
+        double valFonciereAttendue = 959233.80;
+        double taxeScolaireAttendue = 11510.85;
+        double taxeMunicipaleAttendue = 23980.85;
+        boolean resultat = valFonciereAttendue == terrain.getValeur_fonciere_totale()
+                && taxeScolaireAttendue == terrain.getTaxe_scolaire()
+                && taxeMunicipaleAttendue == terrain.getTaxe_municipale();
+        assertTrue("valfoncièreAttendue: " + valFonciereAttendue+", vs valeur obtenue: "+terrain.getValeur_fonciere_totale()
+                + "\ntaxe scolaire attendue: " + taxeScolaireAttendue+", vs valeur obtenue: "+terrain.getTaxe_scolaire()
+                + "\ntaxe muninipale attendue: " + taxeMunicipaleAttendue+", vs valeur obtenue: "+terrain.getTaxe_municipale(), 
+                resultat);
+    }
 
 
 }
