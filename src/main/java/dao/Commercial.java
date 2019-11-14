@@ -24,7 +24,7 @@ public class Commercial {
         terrain.setTaxe_municipale(CalculTaxes.CalculerTaxeMunicipale(terrain.getValeur_fonciere_totale()));
     }
     
-    private static void calculValeurLotsCommerciaux(Terrain terrain) {
+    public static void calculValeurLotsCommerciaux(Terrain terrain) {
         List<Lot> lots = terrain.getLots();
         
         for(int i = 0; i < lots.size();i++) {
@@ -33,7 +33,7 @@ public class Commercial {
         }
     }
     
-    private static void calculDroitsPassageLotsCommerciaux(Terrain terrain) {
+    public static void calculDroitsPassageLotsCommerciaux(Terrain terrain) {
         List<Lot> lots = terrain.getLots();
         
         for(int i = 0; i < lots.size();i++) {
@@ -42,7 +42,7 @@ public class Commercial {
         }
     }
     
-    private static void calculMontantServicesLotsCommerciaux(Terrain terrain) {
+    public static void calculMontantServicesLotsCommerciaux(Terrain terrain) {
         List<Lot> lots = terrain.getLots();
         double montant;
         
@@ -58,7 +58,7 @@ public class Commercial {
         }
     }
     
-    private static void calculValeurFonciereLotsCommerciaux(Terrain terrain) {
+    public static void calculValeurFonciereLotsCommerciaux(Terrain terrain) {
         List<Lot> lots = terrain.getLots();
         
         for(int i = 0; i < lots.size();i++) {
@@ -67,7 +67,7 @@ public class Commercial {
         }
     }
     
-    private static void calculValeurFonciereTerrainCommercial(Terrain terrain) {
+    public static void calculValeurFonciereTerrainCommercial(Terrain terrain) {
         List<Lot> lots = terrain.getLots();
         double valeurFonciere = 733.77;
         
