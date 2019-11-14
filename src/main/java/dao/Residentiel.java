@@ -34,8 +34,8 @@ public class Residentiel {
             totalLots += valeurLot;
         }
         t.setValeur_fonciere_totale(Utilitaire.arrondir5CentSup(MONTANT_BASE + totalLots));
-        t.setTaxe_scolaire(CalculTaxes.CalculerTaxeScolaire(totalLots));
-        t.setTaxe_municipale(CalculTaxes.CalculerTaxeMunicipale(totalLots));
+        t.setTaxe_scolaire(CalculTaxes.CalculerTaxeScolaire(t.getValeur_fonciere_totale()));
+        t.setTaxe_municipale(CalculTaxes.CalculerTaxeMunicipale(t.getValeur_fonciere_totale()));
     }
 
     public static double calculerValeurFonciereLot(Terrain t, double superficie) {
