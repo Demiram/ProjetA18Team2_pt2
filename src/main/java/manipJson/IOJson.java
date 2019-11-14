@@ -72,15 +72,16 @@ public class IOJson {
         mainObject.accumulate("valeur_fonciere_totale", terrain.getValeur_fonciere_totale() + " $");
         mainObject.accumulate("taxe_scolaire", terrain.getTaxe_scolaire() + " $");
         mainObject.accumulate("taxe_municipale", terrain.getTaxe_municipale() + " $");
-        mainObject.accumulate("lotissements", lotsJson);
         
         for(int i = 0; i < lots.size(); i++) {
-            singleLot.accumulate("description", lots.get(i).getDescriptionSortie());
+            
+            singleLot.accumulate("description", lots.get(i).getDescriptionEntree());
             singleLot.accumulate("valeur_par_lot", lots.get(i).getValeur_par_lot() + " $");
             lotsJson.add(singleLot);
             singleLot.clear();
         }
         
+        mainObject.accumulate("lotissements", lotsJson);
         FileWriter.saveStringIntoFile(outputPath, mainObject.toString());
     }
 }
