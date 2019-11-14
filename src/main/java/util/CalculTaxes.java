@@ -19,7 +19,6 @@ public class CalculTaxes {
     //calcul de la taxe scolaire
     public static double CalculerTaxeScolaire(double montant_de_base) {
         double taxes = montant_de_base * TAXE_SCOLAIRE;
-        System.out.println("montant taxes: "+taxes);
         return Utilitaire.arrondir5CentSup(taxes);
     }
 
