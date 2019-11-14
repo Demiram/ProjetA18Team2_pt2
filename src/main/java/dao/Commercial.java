@@ -7,6 +7,7 @@ package dao;
 import java.util.List;
 import modele.Lot;
 import modele.Terrain;
+import util.CalculTaxes;
 import util.Utilitaire;
 
 /**
