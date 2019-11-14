@@ -31,9 +31,9 @@ public class Agricole {
             lot.setValeur_par_lot(valeurLot);
             totalLots += valeurLot;
         }
-            t.setValeur_fonciere_totale(Utilitaire.arrondir5CentSup(MONTANT_BASE+totalLots));
-            t.setTaxe_scolaire(CalculTaxes.CalculerTaxeScolaire(totalLots));
-            t.setTaxe_municipale(CalculTaxes.CalculerTaxeMunicipale(totalLots));
+            t.setValeur_fonciere_totale(Utilitaire.arrondir5CentSup(VALEUR_BASE+totalLots));
+            t.setTaxe_scolaire(CalculTaxes.CalculerTaxeScolaire(t.getValeur_fonciere_totale()));
+            t.setTaxe_municipale(CalculTaxes.CalculerTaxeMunicipale(t.getValeur_fonciere_totale()));
         
     }
 
