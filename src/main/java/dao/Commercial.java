@@ -19,7 +19,8 @@ public class Commercial {
         calculDroitsPassageLotsCommerciaux(terrain);
         calculMontantServicesLotsCommerciaux(terrain);
         calculValeurFonciereTerrainCommercial(terrain);
-        
+        terrain.setTaxe_scolaire(CalculTaxes.CalculerTaxeScolaire(terrain.getValeur_fonciere_totale()));
+        terrain.setTaxe_municipale(CalculTaxes.CalculerTaxeMunicipale(terrain.getValeur_fonciere_totale()));
     }
     
     private static void calculValeurLotsCommerciaux(Terrain terrain) {
@@ -76,11 +77,4 @@ public class Commercial {
         terrain.setValeur_fonciere_totale(Utilitaire.arrondir5CentSup(valeurFonciere));
     }
     
-    private static void calculTaxeScolaire(Terrain terrain) {
-        
-    }
-    
-    private static void calculTaxeMunicipale(Terrain terrain) {
-        
-    }
 }
