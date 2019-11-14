@@ -14,7 +14,7 @@ public class Lot {
     private String descriptionEntree;
     private int nombre_droits_passage;
     private int nombre_services;
-    private int superficie;
+    private double superficie;
     private String date_mesure;
     
     //vars de traitements
@@ -29,7 +29,7 @@ public class Lot {
     //constr entrees
     public Lot() {}
     
-    public Lot(String descriptionEntree, int nombre_droits_passage, int nombre_services, int superficie, String date_mesure) {
+    public Lot(String descriptionEntree, int nombre_droits_passage, int nombre_services, double superficie, String date_mesure) {
         this.descriptionEntree = descriptionEntree;
         this.nombre_droits_passage = nombre_droits_passage;
         this.nombre_services = nombre_services;
@@ -62,11 +62,11 @@ public class Lot {
         this.nombre_services = nombre_services;
     }
     
-    public int getSuperficie() {
+    public double getSuperficie() {
         return superficie;
     }
     
-    public void setSuperficie(int superficie) {
+    public void setSuperficie(double superficie) {
         this.superficie = superficie;
     }
     
