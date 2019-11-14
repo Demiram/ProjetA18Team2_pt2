@@ -5,6 +5,14 @@
  */
 package team2.projetmaven.a18tp1_maven;
 
+import dao.Agricole;
+import dao.Commercial;
+import dao.Residentiel;
+import java.io.IOException;
+import manipJson.IOJson;
+import static manipJson.IOJson.traiterEntreeTerrain;
+import modele.Terrain;
+
 /**
  *
  * @author 0249248
@@ -15,7 +23,33 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        // TODO code application logic here.
+        
+        Terrain terrain = null;
+        String inputPath = args[0];
+        String outputPath = args[1];
+        try{
+            terrain = traiterEntreeTerrain(inputPath); 
+        } catch (IOException e){
+            System.out.println(inputPath+": file not found");
+        }
+        
+        switch (terrain.getType_terrain()){
+            case 0: Agricole.calculerValeurTerrainAgricole(terrain);
+                break;
+            case 1: Residentiel.calculerValeurTerrain(terrain);
+                break;
+            case 2: Commercial.calculCommercial(terrain);
+                break;
+            default: System.out.println("type de terrain inconnu");
+                break;
+        }
+        
+        try{
+            IOJson.traiterSortieTerrain(terrain, outputPath);
+        }catch (IOException e){
+            System.out.println(outputPath+": cannot create the file in that path");
+        }
+        
     }
-    
 }
