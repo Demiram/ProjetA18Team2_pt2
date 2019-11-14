@@ -80,7 +80,7 @@ public class CommercialTest {
     }
     
     @Test
-    public void calculValeurFonciereLotsCommerciaux() {
+    public void calculValeurFonciereLotsCommerciaux_SivaleurLot500_Etdroitspassge100_EtmtnService500_retourne1100() {
         Lot lot = new Lot();
         List<Lot> lots = new ArrayList<Lot>();
         
@@ -97,7 +97,7 @@ public class CommercialTest {
     }
     
     @Test
-    public void calculValeurFonciereTerrainCommercial() {
+    public void calculValeurFonciereTerrainCommercial_Sivaleurfonciere500_retourne1233_8() {
         Lot lot = new Lot();
         List<Lot> lots = new ArrayList<Lot>();
         double expected = 0;
