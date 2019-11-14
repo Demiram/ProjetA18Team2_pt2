@@ -17,6 +17,11 @@ public class Lot {
     private int superficie;
     private String date_mesure;
     
+    //vars de traitements
+    private double montantDroitsPassage;
+    private double montantServices;
+    private double valeurFonciere;
+    
     //vars sorties
     private String descriptionSortie;
     private double valeur_par_lot;
@@ -72,6 +77,32 @@ public class Lot {
     public void setDate_mesure(String date_mesure) {
         this.date_mesure = date_mesure;
     }
+    
+    //get set traitements
+    public double getMontantDroitsPassage() {
+        return montantDroitsPassage;
+    }
+
+    public void setMontantDroitsPassage(double montantDroitsPassage) {
+        this.montantDroitsPassage = montantDroitsPassage;
+    }
+
+    public double getMontantServices() {
+        return montantServices;
+    }
+
+    public void setMontantServices(double montantServices) {
+        this.montantServices = montantServices;
+    }
+
+    public double getValeurFonciere() {
+        return valeurFonciere;
+    }
+
+    public void setValeurFonciere(double valeurFonciere) {
+        this.valeurFonciere = valeurFonciere;
+    }
+    
     
     //get set sorties
      public String getDescriptionSortie() {
