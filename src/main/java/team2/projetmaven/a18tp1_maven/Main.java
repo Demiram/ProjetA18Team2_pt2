@@ -48,7 +48,7 @@ public class Main {
         try{
             IOJson.traiterSortieTerrain(terrain, outputPath);
         }catch (IOException e){
-            System.out.println(outputPath+": cannot create the file in that path");
+            System.out.println(outputPath+": you cannot create the file in that path");
         }
         
     }
