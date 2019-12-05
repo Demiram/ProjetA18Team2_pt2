@@ -34,7 +34,7 @@ public class IOJson {
         String entreeDateMesureLot;
 
         JSONObject mainObject = JSONObject.fromObject(json);
-
+        
         terrain.setType_terrain(mainObject.getInt("type_terrain"));
         terrain.setPrix_m2_min(validerEntreeDouble(mainObject.getString("prix_m2_min")));
         terrain.setPrix_m2_max(validerEntreeDouble(mainObject.getString("prix_m2_max")));
