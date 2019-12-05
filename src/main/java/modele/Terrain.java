@@ -100,7 +100,7 @@ public class Terrain {
     }
 
     public String validerTerrain() {
-        String message = "";
+        String message = "valide";
   
         //parcourrir la liste des lots 
         //et verifier qu'ils ont des descriptions differentes         
@@ -115,7 +115,7 @@ public class Terrain {
         }
         //verifier que le type de terrain est entre 0 et 2 inclusivement
         if (type_terrain < 0 || type_terrain > 2) {
-            message = " le type de tetrrain doit prendre la valeur 0, 1 ou 2";
+            message = " le type de terrain doit prendre la valeur 0, 1 ou 2";
         }
         //prix_m2-min sup = a 0
         if (prix_m2_max < 0) {
@@ -132,11 +132,7 @@ public class Terrain {
         //un terrain doit avoir au moins un lot
          if (this.lots.size()< 1){
             message = "il doit y avoir au moins un lot";
-        }       
-        
-        
-        
-        
+        }        
         return message;
     }
 
