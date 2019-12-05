@@ -5,6 +5,7 @@
  */
 package manipJson;
 
+import java.util.ArrayList;
 import java.util.List;
 import modele.Terrain;
 import net.sf.json.JSONArray;
@@ -59,8 +60,8 @@ public class IOJsonTest {
      * Test of lancerErreur method, of class IOJson.
      */
     @Test
-    public void testLancerErreur_List_2objets() {
-        List<String> message = null;
+    public void testLancerErreur_List_DeuxObjets() {
+        List<String> message = new ArrayList<String>();
         JSONObject expResult = new JSONObject();
         message.add("abc");
         message.add("def");
@@ -78,6 +79,7 @@ public class IOJsonTest {
         expResult.accumulate("messages", messages);
 
         assertEquals(expResult, result);
+        System.out.println(expResult.toString() + ": " + result.toString());
     }
 
     /**
@@ -111,18 +113,6 @@ public class IOJsonTest {
     public void testValiderEntreeDouble_entreePoint() {
         String str = "0.01";
         double expResult = 0.01;
-        double result = IOJson.validerEntreeDouble(str);
-
-        assertEquals(expResult, result, 0);
-    }
-
-    /**
-     * Test of validerEntreeDouble method, of class IOJson.
-     */
-    @Test
-    public void testValiderEntreeDouble_entreeVide() {
-        String str = "";
-        double expResult = 0.0;
         double result = IOJson.validerEntreeDouble(str);
 
         assertEquals(expResult, result, 0);
