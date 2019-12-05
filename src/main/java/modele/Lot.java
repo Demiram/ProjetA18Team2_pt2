@@ -42,7 +42,7 @@ public class Lot {
         this.nombre_droits_passage = nombre_droits_passage;
         this.nombre_services = nombre_services;
         this.superficie = superficie;
-        this.date_mesure = this.formatterDateISO8601(date_mesure);
+        this.date_mesure = date_mesure;
     }
 
     public String validerLot() {
@@ -79,21 +79,27 @@ public class Lot {
             return "Erreur au " + this.descriptionEntree + ". Il y manque une date de mesure.";
         }
 
+        
+        //vérification de la validité du format de la date
+        if(!validerFormat(this.date_mesure)){
+            return "Le format de la date n'est pas valide dans "+this.descriptionEntree;
+        }
+        
         return message;
     }
 
-    public String formatterDateISO8601(String dateAFormatter) {
-        Date dateFormattee = null;
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    public boolean validerFormat(String date) {
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date formattedDate = null;
         try {
-            dateFormattee = format.parse(dateAFormatter);
+            formattedDate = dateFormatter.parse(date);
         } catch (ParseException ex) {
-            return null;
+            return false;
         }
-        return format.format(dateFormattee);
+        return true;
     }
 
-    //get set entrees
+//get set entrees
     public String getDescriptionEntree() {
         return descriptionEntree;
     }

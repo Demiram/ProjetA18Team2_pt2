@@ -43,12 +43,100 @@ public class LotTest {
     //
     
     
-//     @Test
-//     public void test_formatterDateISO8601() {
-//         Lot lot = new Lot("boum", 1, 1, 1.0, "2000/10/25");
-//         String dateAttendue = "2000-10-25";
-//         assertTrue("date attendue: "+dateAttendue+"; date obtenue: "+lot.getDate_mesure(), dateAttendue.equals(lot.getDate_mesure()));
-//     }
-//     
+   //valider lot description non valide
+    @Test
+    public void test_description_null(){
+        Lot lot = new Lot(null, 1, 1, 1.0, "");
+        String messageAttendu = "Erreur: La description d'au moins un des lots est manquante.";
+        String resultat = lot.validerLot();
+        assertTrue("reponse attendue: "+messageAttendu+"; resultat: "+resultat, messageAttendu.equals(resultat));
+    }
+    
+    //valider lot droits passage non valides
+    @Test
+    public void test_droits_tropBas(){
+        Lot lot = new Lot("lot 1", -1, 1, 1.0, "");
+        String messageAttendu = "Erreur au " + "lot 1" + ". Le nombre de droits de passages doit avoir une valeur non nulle et positive.";
+        String resultat = lot.validerLot();
+        assertTrue("reponse attendue: "+messageAttendu+"; resultat: "+resultat, messageAttendu.equals(resultat));
+    }
+
+    @Test
+    public void test_droits_tropHauts(){
+        Lot lot = new Lot("lot 1", 11, 1, 1.0, "");
+        String messageAttendu = "Erreur au " + "lot 1" + ". Le nombre de droits de passages doit être compris entre 0 et 10.";
+        String resultat = lot.validerLot();
+        assertTrue("reponse attendue: "+messageAttendu+"; resultat: "+resultat, messageAttendu.equals(resultat));
+    }
+    
+    //valider services non valides
+    @Test
+    public void test_services_tropBas(){
+        Lot lot = new Lot("lot 1", 8, -1, 1.0, "");
+        String messageAttendu = "Erreur au " + "lot 1" + ". Le nombre de services doit avoir une valeur non nulle et positive.";
+        String resultat = lot.validerLot();
+        assertTrue("reponse attendue: "+messageAttendu+"; resultat: "+resultat, messageAttendu.equals(resultat));
+    }    
+   
+    @Test
+    public void test_services_tropHaut(){
+        Lot lot = new Lot("lot 1", 8, 11, 1.0, "");
+        String messageAttendu = "Erreur au " + "lot 1" + ". Le nombre de services doit être compris entre 0 et 5.";
+        String resultat = lot.validerLot();
+        assertTrue("reponse attendue: "+messageAttendu+"; resultat: "+resultat, messageAttendu.equals(resultat));
+    }
+    
+   //valider lot superficie non valide
+    @Test
+    public void test_superficie_tropBasse(){
+        Lot lot = new Lot("lot 1", 8, 5, -1.0, "");
+        String messageAttendu = "Erreur au " + "lot 1" + ". La superficie doit avoir une valeur non nulle et positive.";
+        String resultat = lot.validerLot();
+        assertTrue("reponse attendue: "+messageAttendu+"; resultat: "+resultat, messageAttendu.equals(resultat));
+    }
+    
+    @Test
+    public void test_superficie_tropHaute(){
+        Lot lot = new Lot("lot 1", 8, 5, 55000.0, "");
+        String messageAttendu = "Erreur au " + "lot 1" + ". La superficie doit être compris entre 0 et 50 000.";
+        String resultat = lot.validerLot();
+        assertTrue("reponse attendue: "+messageAttendu+"; resultat: "+resultat, messageAttendu.equals(resultat));
+    }
+
+    //valider presence date 
+        @Test
+    public void test_date_null(){
+        Lot lot = new Lot("lot 1", 8, 5, 50000.0, null);
+        String messageAttendu = "Erreur au " + "lot 1" + ". Il y manque une date de mesure.";
+
+        String resultat = lot.validerLot();
+        assertTrue("reponse attendue: "+messageAttendu+"; resultat: "+resultat, messageAttendu.equals(resultat));
+    }
+    
+    //valider lot format date non valide
+    @Test
+    public void test_formatDate_vide(){
+        Lot lot = new Lot("lot 1", 8, 5, 45000.0, "");
+        String messageAttendu = "Le format de la date n'est pas valide dans "+"lot 1";
+        String resultat = lot.validerLot();
+        assertTrue("reponse attendue: "+messageAttendu+"; resultat: "+resultat, messageAttendu.equals(resultat));
+    }
+    
+    @Test
+    public void test_formatDate_mauvaisFormat(){
+        Lot lot = new Lot("lot 1", 8, 5, 45000.0, "2000/10/25");
+        String messageAttendu = "Le format de la date n'est pas valide dans "+"lot 1";
+        String resultat = lot.validerLot();
+        assertTrue("reponse attendue: "+messageAttendu+"; resultat: "+resultat, messageAttendu.equals(resultat));
+    }
+    
+    // valider lot format date valide
+    @Test
+    public void test_valide(){
+        Lot lot = new Lot("lot 1", 8, 5, 45000.0, "2000-10-25");
+        String messageAttendu = "valide";
+        String resultat = lot.validerLot();
+        assertTrue("reponse attendue: "+messageAttendu+"; resultat: "+resultat, messageAttendu.equals(resultat));
+    }    
      
 }
