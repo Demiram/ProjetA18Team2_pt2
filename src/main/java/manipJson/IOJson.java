@@ -32,9 +32,10 @@ public class IOJson {
         int entreeNbServicesLot;
         int entreeSuperficieLot;
         String entreeDateMesureLot;
-
-        JSONObject mainObject = JSONObject.fromObject(json);
-
+        
+        // consoliderNomsProprietes remplace les " " par "_"
+        JSONObject mainObject = consoliderNomsProprietes(JSONObject.fromObject(json.toLowerCase()));
+        
         terrain.setType_terrain(mainObject.getInt("type_terrain"));
         terrain.setPrix_m2_min(validerEntreeDouble(mainObject.getString("prix_m2_min")));
         terrain.setPrix_m2_max(validerEntreeDouble(mainObject.getString("prix_m2_max")));
@@ -106,6 +107,61 @@ public class IOJson {
         }
 
         return Double.parseDouble(strB.toString());
+    }
+    public static JSONObject consoliderNomsProprietes(JSONObject jObj) {
+        if(!jObj.has("valeur_fonciere_totale")) {
+            if(jObj.has("valeur fonciere totale")) {
+                jObj.accumulate("valeur_fonciere_totale", jObj.get("valeur fonciere totale"));
+            } else if(jObj.has("valeur_fonciere totale")) {
+                jObj.accumulate("valeur_fonciere_totale", jObj.get("valeur_fonciere totale"));
+            } else if(jObj.has("valeur fonciere_totale")) {
+                jObj.accumulate("valeur_fonciere_totale", jObj.get("valeur fonciere_totale"));
+            } else if(jObj.has("valeurfoncieretotale")) {
+                jObj.accumulate("valeur_fonciere_totale", jObj.get("valeurfoncieretotale"));
+            }
+        }
+        
+        if(!jObj.has("taxe_scolaire")) {
+            if(jObj.has("taxe scolaire")) {
+                jObj.accumulate("taxe_scolaire", jObj.get("taxe scolaire"));
+            } else if(jObj.has("taxescolaire")) {
+                jObj.accumulate("taxe_scolaire", jObj.get("taxescolaire"));
+            }
+        }
+        
+        if(!jObj.has("taxe_municipale")) {
+            if(jObj.has("taxe municipale")) {
+                jObj.accumulate("taxe_municipale", jObj.get("taxe municipale"));
+            } else if(jObj.has("taxemunicipale")) {
+                jObj.accumulate("taxe_municipale", jObj.get("taxemunicipale"));
+            }
+        }
+        
+        JSONArray lots = new JSONArray();
+        JSONObject singleLot = new JSONObject();
+        
+        if(!jObj.has("lotissements")) {
+            lots = jObj.getJSONArray("lotissements");
+            
+            for(int i = 0; i < lots.size(); i++) {
+                singleLot = lots.getJSONObject(i);
+                
+                if(!singleLot.has("valeur_par_lot")) {
+                    if(singleLot.has("valeur par lot")) {
+                        singleLot.accumulate("valeur_par_lot", jObj.get("valeur par lot"));
+                    } else if(singleLot.has("valeur_par lot")) {
+                        singleLot.accumulate("valeur_par_lot", jObj.get("valeur_par lot"));
+                    } else if(singleLot.has("valeur par_lot")) {
+                        singleLot.accumulate("valeur_par_lot", jObj.get("valeur par_lot"));
+                    } else if(singleLot.has("valeurparlot")) {
+                        singleLot.accumulate("valeur_par_lot", jObj.get("valeurparlot"));
+                    }
+                }
+                
+            }
+        }
+        
+        return jObj;
     }
 
     public static JSONObject lancerErreur(List<String> message) {
