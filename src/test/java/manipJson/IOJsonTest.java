@@ -47,11 +47,10 @@ public class IOJsonTest {
     @Test
     public void testLancerErreur_String() {
         String message = "abc";
-        JSONObject expResult = null;
+        JSONObject expResult = new JSONObject();
         JSONObject result = IOJson.lancerErreur(message);
 
-        JSONObject mainObject = new JSONObject();
-        mainObject.accumulate("message", message);
+        expResult.accumulate("message", "abc");
 
         assertEquals(expResult, result);
     }
@@ -62,18 +61,17 @@ public class IOJsonTest {
     @Test
     public void testLancerErreur_List_2objets() {
         List<String> message = null;
-        JSONObject expResult = null;
+        JSONObject expResult = new JSONObject();
         message.add("abc");
         message.add("def");
         JSONObject result = IOJson.lancerErreur(message);
 
-        expResult = new JSONObject();
         JSONArray messages = new JSONArray();
         JSONObject obj1 = new JSONObject();
-        JSONObject obj2 = new JSONObject();
-
         obj1.accumulate("message", "abc");
+        JSONObject obj2 = new JSONObject();
         obj2.accumulate("message", "def");
+
         messages.add(obj1);
         messages.add(obj2);
 
