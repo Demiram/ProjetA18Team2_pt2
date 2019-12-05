@@ -21,26 +21,25 @@ import static org.junit.Assert.*;
  * @author 0249248
  */
 public class IOJsonTest {
-    
+
     public IOJsonTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
-
 
     /**
      * Test of lancerErreur method, of class IOJson.
@@ -50,10 +49,10 @@ public class IOJsonTest {
         String message = "abc";
         JSONObject expResult = null;
         JSONObject result = IOJson.lancerErreur(message);
-        
+
         JSONObject mainObject = new JSONObject();
-        mainObject.accumulate("message",message);
-        
+        mainObject.accumulate("message", message);
+
         assertEquals(expResult, result);
     }
 
@@ -64,23 +63,25 @@ public class IOJsonTest {
     public void testLancerErreur_List_2objets() {
         List<String> message = null;
         JSONObject expResult = null;
+        message.add("abc");
+        message.add("def");
         JSONObject result = IOJson.lancerErreur(message);
-        
+
         expResult = new JSONObject();
         JSONArray messages = new JSONArray();
         JSONObject obj1 = new JSONObject();
         JSONObject obj2 = new JSONObject();
-        
+
         obj1.accumulate("message", "abc");
         obj2.accumulate("message", "def");
         messages.add(obj1);
         messages.add(obj2);
-        
-        expResult.accumulate("messages",messages);
-        
+
+        expResult.accumulate("messages", messages);
+
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of validerEntreeDouble method, of class IOJson.
      */
@@ -89,10 +90,10 @@ public class IOJsonTest {
         String str = "0,01";
         double expResult = 0.01;
         double result = IOJson.validerEntreeDouble(str);
-        
-        assertEquals(expResult, result, 0.0);
+
+        assertEquals(expResult, result, 0);
     }
-    
+
     /**
      * Test of validerEntreeDouble method, of class IOJson.
      */
@@ -101,8 +102,8 @@ public class IOJsonTest {
         String str = "0,01 $";
         double expResult = 0.01;
         double result = IOJson.validerEntreeDouble(str);
-        
-        assertEquals(expResult, result, 0.0);
+
+        assertEquals(expResult, result, 0);
     }
 
     /**
@@ -113,10 +114,10 @@ public class IOJsonTest {
         String str = "0.01";
         double expResult = 0.01;
         double result = IOJson.validerEntreeDouble(str);
-        
-        assertEquals(expResult, result, 0.0);
+
+        assertEquals(expResult, result, 0);
     }
-    
+
     /**
      * Test of validerEntreeDouble method, of class IOJson.
      */
@@ -125,7 +126,7 @@ public class IOJsonTest {
         String str = "";
         double expResult = 0.0;
         double result = IOJson.validerEntreeDouble(str);
-        
-        assertEquals(expResult, result, 0.0);
+
+        assertEquals(expResult, result, 0);
     }
 }
