@@ -114,7 +114,7 @@ public class IOJson {
         JSONObject singleMessage = new JSONObject();
 
         for (int i = 0; i < message.size(); i++) {
-            singleMessage.accumulate("message" + i, message.get(i));
+            singleMessage.accumulate("message", message.get(i));
             messages.add(singleMessage);
             singleMessage.clear();
         }
