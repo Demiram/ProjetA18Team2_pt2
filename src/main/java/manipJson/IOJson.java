@@ -35,8 +35,8 @@ public class IOJson {
         JSONObject mainObject = JSONObject.fromObject(json);
         
         terrain.setType_terrain(mainObject.getInt("type_terrain"));
-        terrain.setPrix_m2_min(mainObject.getDouble("prix_m2_min"));
-        terrain.setPrix_m2_max(mainObject.getDouble("prix_m2_max"));
+        terrain.setPrix_m2_min(validerEntreeDouble(mainObject.getString("prix_m2_min")));
+        terrain.setPrix_m2_max(validerEntreeDouble(mainObject.getString("prix_m2_max")));
         
         JSONArray lots = mainObject.getJSONArray("lotissements");
         JSONObject singleLot;
@@ -91,6 +91,20 @@ public class IOJson {
         mainObject.accumulate("message", message);
         
         return mainObject;
+    }
+    
+    public static double validerEntreeDouble(String str) {
+        StringBuilder strB = new StringBuilder();
+        
+        for(int i = 0; i<str.length();i++) {
+            if(str.charAt(i)== ',') {
+                strB.append('.');
+            } else if(str.charAt(i) != ' ' && str.charAt(i) != '$') {
+                strB.append(str.charAt(i));
+            }
+        }
+        
+        return Double.parseDouble(strB.toString());
     }
     public static JSONObject lancerErreur(List<String> message) {
         JSONObject mainObject = new JSONObject();
