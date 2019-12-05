@@ -5,6 +5,10 @@
  */
 package util;
 
+import java.io.File;
+import modele.Terrain;
+import net.sf.json.JSONObject;
+
 /**
  *
  * @author Bernard
@@ -29,4 +33,16 @@ public class Utilitaire {
         return nombreArrondi;
     }
     
+    public static String validationComplete(Terrain terrain) {
+        int i = 0;
+        String validFlag = "valide";
+        
+        while(i < terrain.getLots().size() && validFlag.equals("valide")) {
+            validFlag = validerLot(terrain.getLots().get(i));
+            
+            i++;
+        }
+        
+        return validFlag;
+    }
 }
