@@ -84,4 +84,12 @@ public class IOJson {
         mainObject.accumulate("lotissements", lotsJson);
         FileWriter.saveStringIntoFile(outputPath, mainObject.toString());
     }
+    
+    public static JSONObject lancerErreur(String message) {
+        JSONObject mainObject = new JSONObject();
+        
+        mainObject.accumulate("message", message);
+        
+        return mainObject;
+    }
 }
