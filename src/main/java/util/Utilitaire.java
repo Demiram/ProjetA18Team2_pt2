@@ -38,7 +38,7 @@ public class Utilitaire {
         String validFlag = "valide";
         
         while(i < terrain.getLots().size() && validFlag.equals("valide")) {
-            validFlag = validerLot(terrain.getLots().get(i));
+            validFlag = terrain.getLots().get(i).validerLot();
             
             i++;
         }
