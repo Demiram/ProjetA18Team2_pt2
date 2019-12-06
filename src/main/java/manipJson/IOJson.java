@@ -164,18 +164,5 @@ public class IOJson {
         return jObj;
     }
 
-    public static JSONObject lancerErreur(List<String> message) {
-        JSONObject mainObject = new JSONObject();
-        JSONArray messages = new JSONArray();
-        JSONObject singleMessage = new JSONObject();
 
-        for (int i = 0; i < message.size(); i++) {
-            singleMessage.accumulate("message", message.get(i));
-            messages.add(singleMessage);
-            singleMessage.clear();
-        }
-
-        mainObject.accumulate("messages", messages);
-        return mainObject;
-    }
 }
