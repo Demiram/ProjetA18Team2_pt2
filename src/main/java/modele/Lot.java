@@ -47,7 +47,6 @@ public class Lot {
 
     public String validerLot() {
         String message = "valide";
-
         //vérification de la description. Elle doit être non null (le caractère unique est vérifié dans la méthode validerTerrain
         if (this.descriptionEntree == null || this.descriptionEntree.length() == 0) {
             return "Erreur: La description d'au moins un des lots est manquante.";

@@ -9,9 +9,14 @@ import dao.Agricole;
 import dao.Commercial;
 import dao.Residentiel;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import manipJson.FileWriter;
 import manipJson.IOJson;
 import static manipJson.IOJson.traiterEntreeTerrain;
 import modele.Terrain;
+import net.sf.json.JSONObject;
+import util.Utilitaire;
 
 /**
  *
@@ -24,32 +29,45 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here.
-        
         Terrain terrain = null;
         String inputPath = args[0];
         String outputPath = args[1];
-        try{
-            terrain = traiterEntreeTerrain(inputPath); 
-        } catch (IOException e){
-            System.out.println(inputPath+": file not found");
+        try {
+            terrain = traiterEntreeTerrain(inputPath);
+        } catch (IOException e) {
+            System.out.println(inputPath + ": file not found");
         }
-        
-        switch (terrain.getType_terrain()){
-            case 0: Agricole.calculerValeurTerrainAgricole(terrain);
-                break;
-            case 1: Residentiel.calculerValeurTerrain(terrain);
-                break;
-            case 2: Commercial.calculCommercial(terrain);
-                break;
-            default: System.out.println("type de terrain inconnu");
-                break;
+        String valide = Utilitaire.validationComplete(terrain);
+        if (valide.equals("valide")) {
+            switch (terrain.getType_terrain()) {
+                case 0:
+                    Agricole.calculerValeurTerrainAgricole(terrain);
+                    break;
+                case 1:
+                    Residentiel.calculerValeurTerrain(terrain);
+                    break;
+                case 2:
+                    Commercial.calculCommercial(terrain);
+                    break;
+                default:
+                    System.out.println("type de terrain inconnu");
+                    break;
+
+            }
+            try {
+                IOJson.traiterSortieTerrain(terrain, outputPath);
+            } catch (IOException e) {
+                System.out.println(outputPath + ": you cannot create the file in that path");
+            }
+        } else {
+            JSONObject erreur = IOJson.lancerErreur(valide);
+            try {
+                FileWriter.saveStringIntoFile(outputPath, erreur.toString());
+            } catch (IOException ex) {
+                System.out.println(outputPath + ": you cannot create the file in that path");
+            }
+
         }
-        
-        try{
-            IOJson.traiterSortieTerrain(terrain, outputPath);
-        }catch (IOException e){
-            System.out.println(outputPath+": you cannot create the file in that path");
-        }
-        
+
     }
 }
