@@ -81,7 +81,7 @@ public class Lot {
         
         //vérification de la validité du format de la date
         if(!validerFormat(this.date_mesure)){
-            return "Le format de la date n'est pas valide dans "+this.descriptionEntree;
+            return "Le format de la date n'est pas valide dans "+this.descriptionEntree+". Le format doit être aaaa-mm-dd .";
         }
         
         return message;
