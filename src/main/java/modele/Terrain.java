@@ -121,9 +121,7 @@ public class Terrain {
         //parcourrir la liste des lots 
         //et verifier qu'ils ont des descriptions differentes         
         for (int i = 0; i < this.lots.size(); i++) {
-            System.out.println("Entree dans la boucle. i="+i+" et "+"liste de taille "+this.lots.size());
             for (int j = i + 1; j < this.lots.size(); j++) {
-                    System.out.println("i: "+i+" j: "+j);
 
                 if (lots.get(i).getDescriptionEntree().equals(lots.get(j).getDescriptionEntree())) {
                     return "La description des lots doit etre unique";
