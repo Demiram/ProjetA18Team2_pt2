@@ -59,28 +59,7 @@ public class IOJsonTest {
     /**
      * Test of lancerErreur method, of class IOJson.
      */
-    @Test
-    public void testLancerErreur_List_DeuxObjets() {
-        List<String> message = new ArrayList<String>();
-        JSONObject expResult = new JSONObject();
-        message.add("abc");
-        message.add("def");
-        JSONObject result = IOJson.lancerErreur(message);
 
-        JSONArray messages = new JSONArray();
-        JSONObject obj1 = new JSONObject();
-        obj1.accumulate("message", "abc");
-        JSONObject obj2 = new JSONObject();
-        obj2.accumulate("message", "def");
-
-        messages.add(obj1);
-        messages.add(obj2);
-
-        expResult.accumulate("messages", messages);
-
-        assertEquals(expResult, result);
-        System.out.println(expResult.toString() + ": " + result.toString());
-    }
 
     /**
      * Test of validerEntreeDouble method, of class IOJson.
