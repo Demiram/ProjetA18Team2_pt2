@@ -5,6 +5,10 @@
  */
 package utilTest;
 
+import java.util.ArrayList;
+import java.util.List;
+import modele.Lot;
+import modele.Terrain;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -161,5 +165,29 @@ public class UtilitaireTest {
         double valeurAttendue = -0.39;
         double retour = Utilitaire.arrondirDecimales(valeur, 2);
         assertTrue("Valeur attendue: " + valeurAttendue + ", mais valeur obtenue: " + retour, valeurAttendue == retour);
+    }
+    
+    
+    //test pour la validation globale
+    @Test
+    public void test_validation_globale_valide(){
+        Lot lot = new Lot("lot 1", 8, 5, 45000.0, "2000-10-25");
+        List<Lot> liste = new ArrayList<Lot>();
+        liste.add(lot);
+        Terrain terrain = new Terrain(1, 5.00, 5.00, liste);
+        String messageAttendu = "valide";
+        String resultat = Utilitaire.validationComplete(terrain);
+        assertTrue("reponse attendue: "+messageAttendu+"; resultat: "+resultat, messageAttendu.equals(resultat));
+    }
+    
+    @Test
+    public void test_validation_champManquant(){
+        Lot lot = new Lot("lot 1", 8, 5, 45000.0, "2000-10-25");
+        List<Lot> liste = new ArrayList<Lot>();
+        liste.add(lot);
+        Terrain terrain = new Terrain(1, 5.00, 5.00, null);
+        String messageAttendu = "il doit avoir au moins un lot";
+        String resultat = Utilitaire.validationComplete(terrain);
+        assertTrue("reponse attendue: "+messageAttendu+"; resultat: "+resultat, messageAttendu.equals(resultat));
     }
 }
