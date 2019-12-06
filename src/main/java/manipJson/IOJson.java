@@ -109,31 +109,35 @@ public class IOJson {
         return Double.parseDouble(strB.toString());
     }
     public static JSONObject consoliderNomsProprietes(JSONObject jObj) {
-        if(!jObj.has("valeur_fonciere_totale")) {
-            if(jObj.has("valeur fonciere totale")) {
-                jObj.accumulate("valeur_fonciere_totale", jObj.get("valeur fonciere totale"));
-            } else if(jObj.has("valeur_fonciere totale")) {
-                jObj.accumulate("valeur_fonciere_totale", jObj.get("valeur_fonciere totale"));
-            } else if(jObj.has("valeur fonciere_totale")) {
-                jObj.accumulate("valeur_fonciere_totale", jObj.get("valeur fonciere_totale"));
-            } else if(jObj.has("valeurfoncieretotale")) {
-                jObj.accumulate("valeur_fonciere_totale", jObj.get("valeurfoncieretotale"));
+        if(!jObj.has("type_terrain")) {
+            if(jObj.has("type terrain")) {
+                jObj.accumulate("type_terrain", jObj.get("type terrain"));
+            } else if(jObj.has("typeterrain")) {
+                jObj.accumulate("type_terrain", jObj.get("typeterrain"));
             }
         }
         
-        if(!jObj.has("taxe_scolaire")) {
-            if(jObj.has("taxe scolaire")) {
-                jObj.accumulate("taxe_scolaire", jObj.get("taxe scolaire"));
-            } else if(jObj.has("taxescolaire")) {
-                jObj.accumulate("taxe_scolaire", jObj.get("taxescolaire"));
+        if(!jObj.has("prix_m2_min")) {
+            if(jObj.has("prix_m2 min")) {
+                jObj.accumulate("prix_m2_min", jObj.get("prix_m2 min"));
+            } else if(jObj.has("prix m2_min")) {
+                jObj.accumulate("prix_m2_min", jObj.get("prix m2_min"));
+            } else if(jObj.has("prix m2 min")) {
+                jObj.accumulate("prix_m2_min", jObj.get("prix m2 min"));
+            } else if(jObj.has("prixm2min")) {
+                jObj.accumulate("prix_m2_min", jObj.get("prixm2min"));
             }
         }
         
-        if(!jObj.has("taxe_municipale")) {
-            if(jObj.has("taxe municipale")) {
-                jObj.accumulate("taxe_municipale", jObj.get("taxe municipale"));
-            } else if(jObj.has("taxemunicipale")) {
-                jObj.accumulate("taxe_municipale", jObj.get("taxemunicipale"));
+        if(!jObj.has("prix_m2_max")) {
+            if(jObj.has("prix_m2 max")) {
+                jObj.accumulate("prix_m2_max", jObj.get("prix_m2 max"));
+            } else if(jObj.has("prix m2_max")) {
+                jObj.accumulate("prix_m2_max", jObj.get("prix m2_max"));
+            } else if(jObj.has("prix m2 max")) {
+                jObj.accumulate("prix_m2_max", jObj.get("prix m2 max"));
+            } else if(jObj.has("prixm2max")) {
+                jObj.accumulate("prix_m2_max", jObj.get("prixm2max"));
             }
         }
         
@@ -146,18 +150,33 @@ public class IOJson {
             for(int i = 0; i < lots.size(); i++) {
                 singleLot = lots.getJSONObject(i);
                 
-                if(!singleLot.has("valeur_par_lot")) {
-                    if(singleLot.has("valeur par lot")) {
-                        singleLot.accumulate("valeur_par_lot", jObj.get("valeur par lot"));
-                    } else if(singleLot.has("valeur_par lot")) {
-                        singleLot.accumulate("valeur_par_lot", jObj.get("valeur_par lot"));
-                    } else if(singleLot.has("valeur par_lot")) {
-                        singleLot.accumulate("valeur_par_lot", jObj.get("valeur par_lot"));
-                    } else if(singleLot.has("valeurparlot")) {
-                        singleLot.accumulate("valeur_par_lot", jObj.get("valeurparlot"));
+                if(!singleLot.has("nombre_droits_passage")) {
+                    if(singleLot.has("nombre_droits passage")) {
+                        singleLot.accumulate("nombre_droits_passage", jObj.get("nombre_droits passage"));
+                    } else if(singleLot.has("nombre droits_passage")) {
+                        singleLot.accumulate("nombre_droits_passage", jObj.get("nombre droits_passage"));
+                    } else if(singleLot.has("nombre droits passage")) {
+                        singleLot.accumulate("nombre_droits_passage", jObj.get("nombre droits passage"));
+                    } else if(singleLot.has("nombredroitspassage")) {
+                        singleLot.accumulate("nombre_droits_passage", jObj.get("nombredroitspassage"));
                     }
                 }
                 
+                if(!jObj.has("nombre_services")) {
+                    if(jObj.has("nombre services")) {
+                        jObj.accumulate("nombre_services", jObj.get("nombre services"));
+                    } else if(jObj.has("nombreservices")) {
+                        jObj.accumulate("nombre_services", jObj.get("nombreservices"));
+                    }
+                }
+                
+                if(!jObj.has("date_mesure")) {
+                    if(jObj.has("date mesure")) {
+                        jObj.accumulate("date_mesure", jObj.get("date mesure"));
+                    } else if(jObj.has("datemesure")) {
+                        jObj.accumulate("date_mesure", jObj.get("datemesure"));
+                    }
+                }
             }
         }
         
