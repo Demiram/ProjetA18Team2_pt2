@@ -101,38 +101,48 @@ public class Terrain {
 
     public String validerTerrain() {
         String message = "valide";
-  
+        
+        if (lots == null){ 
+          return "il doit avoir au moins un lot";
+        }
+        
+        if (lots.isEmpty() || this.lots.size()< 1){ 
+          return "il doit avoir au moins un lot";
+        }
+        
+         //le nombre de lots ne doit jamais depasser 10 lots
+        if (this.lots.size()> 10){
+            return "le nombre de lots ne doit pas dépasser 10 lots";
+        }
+//        //un terrain doit avoir au moins un lot
+//         if (this.lots.size()< 1){
+//            return "il doit y avoir au moins un lot";
+//        }        
         //parcourrir la liste des lots 
         //et verifier qu'ils ont des descriptions differentes         
         for (int i = 0; i < this.lots.size(); i++) {
+            System.out.println("Entree dans la boucle. i="+i+" et "+"liste de taille "+this.lots.size());
             for (int j = i + 1; j < this.lots.size(); j++) {
+                    System.out.println("i: "+i+" j: "+j);
 
                 if (lots.get(i).getDescriptionEntree().equals(lots.get(j).getDescriptionEntree())) {
-
-                    return message = "La description des lots doit etre unique";
+                    return "La description des lots doit etre unique";
                 }
             }
         }
         //verifier que le type de terrain est entre 0 et 2 inclusivement
         if (type_terrain < 0 || type_terrain > 2) {
-            message = " le type de terrain doit prendre la valeur 0, 1 ou 2";
+            return " le type de terrain doit prendre la valeur 0, 1 ou 2";
         }
         //prix_m2-min sup = a 0
         if (prix_m2_max < 0) {
-            message = "le montant du prix maximum ne doit pas etre negatif";
+            return "le montant du prix maximum ne doit pas etre negatif";
         }
         //prix_m2-min sup = a 0
         if (prix_m2_min < 0) {
-            message = "le montant du prix minimum ne doit pas etre negatif";
+            return "le montant du prix minimum ne doit pas etre negatif";
         }
-        //le nombre de lots ne doit jamais depasser 10 lots
-        if (this.lots.size()> 10){
-            message = "le nombre de lots ne doit pas dépasser 10 lots";
-        }
-        //un terrain doit avoir au moins un lot
-         if (this.lots.size()< 1){
-            message = "il doit y avoir au moins un lot";
-        }        
+       
         return message;
     }
 
